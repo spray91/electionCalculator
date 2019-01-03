@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Election Calculator</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="row" style="margin-top:20px">
+		<div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 col-xs-offset-2 col-sm-offset-2 col-md-offset-3 col-lg-offset-2">
+            <form>
+                <fieldset>
+                    <h2>Current distribution of votes</h2>
+                    <h2>Candidates</h2>
+                    <table class="table table-condensed">
+					    <thead>
+					      <tr>
+					        <th>Name</th>
+					        <th>Party</th>
+					        <th>Votes</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr th:each="element : ${candidates}">
+					        <td><span th:text="${element.name}"></span></td>
+					        <td><span th:text="${element.party}"></span></td>
+					        <td><span th:text="${element.votes}"></span></td>
+					      </tr>
+					    </tbody>
+					</table>
+					<h2>Parties</h2>
+                    <table class="table table-condensed">
+					    <thead>
+					      <tr>
+					        <th>Party</th>
+					        <th>Votes</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr th:each="element : ${party}">
+					        <td><span th:text="${element.party}"></span></td>
+					        <td><span th:text="${element.votes}"></span></td>
+					      </tr>
+					    </tbody>
+					</table>
+					<h2>Total votes</h2>
+                    <table class="table table-condensed">
+					    <thead>
+					      <tr>
+					        <th>Valid</th>
+					        <th>Invalid</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td><span th:text="${validvotes}"></span></td>
+					        <td><span th:text="${invalidvotes}"></span></td>
+					      </tr>
+					    </tbody>
+					</table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+</body>
+</html>

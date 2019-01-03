@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Election Calculator</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 col-xs-offset-2 col-sm-offset-2 col-md-offset-3 col-lg-offset-2">
+            <form th:action="@{/confirm}" method="post" th:object="${identity}" >
+                <fieldset>
+                    <h3 align="center">Please confirm your identity before you vote</h3></br>
+                    <div th:if="${errorMessage}">
+                        <div class="alert alert-danger">
+                            <p th:each="error : ${errorMessage}">
+                                <medium th:text="${error}"></medium>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" class="form-control input-lg"
+                               placeholder="Name" required="true" autofocus="true"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="surname" id="surname" class="form-control input-lg"
+                               placeholder="Surname" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="pesel" id="pesel" class="form-control input-lg"
+                               placeholder="PESEL" required="true"/>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input align="center" type="submit" class="btn btn-lg btn-primary btn-block" value="Confirm"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

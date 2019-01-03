@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Election Calculator</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 col-xs-offset-2 col-sm-offset-2 col-md-offset-3 col-lg-offset-2">
+            <form th:if="${confirmed}">
+                <fieldset th:unless="${voted}">
+                    <h2>You choose your candidate.</h2>
+                    <h4>Now you can vote or modify your vote card.</h4><br>
+                    <div class="row">
+                        <div class="btn-group col-md-offset-2 col-lg-offset-2">
+                            <a th:href="@{/vote/send}" class="btn btn-lg btn-success" role="button">Vote</a>
+                            <a th:href="@{/vote/modify}" class="btn btn-lg btn-primary" role="button">Modify card</a>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset th:if="${voted}">
+                    <h2>Your vote has been sent.</h2>
+                </fieldset>
+            </form>
+            <form th:unless="${confirmed}">
+                <fieldset>
+                    <h2>Choose your candidate</h2><br>
+                    <table class="table table-condensed">
+					    <thead>
+					      <tr>
+					        <th>Name</th>
+					        <th>Party</th>
+					        <th></th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr th:each="element : ${card}">
+					        <td><span th:text="${element.name}"></span></td>
+					        <td><span th:text="${element.party}"></span></td>
+					        <td>
+					        	<a th:if="${element.vote}" th:href="@{'/vote/unvotefor/' + ${element.id}}" class="btn btn-danger btn-xs pull-right" role="button">Unvote</a>
+                    			<a th:unless="${element.vote}" th:href="@{'/vote/votefor/' + ${element.id}}" class="btn btn-success btn-xs pull-right" role="button">Vote</a>
+							</td>
+					      </tr>
+					    </tbody>
+					  </table>
+				
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 text-center">
+                        	<a th:href="@{/vote/confirm}" class="btn btn-lg btn-primary btn-block" role="button">Confirm vote</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+</body>
+</html>

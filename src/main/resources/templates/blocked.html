@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Election Calculator</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="/fragments/header :: header"/>
+	
+<div class="container">
+	<div class="jumbotron">
+		<h1>You are not able to vote.</h1>
+	    <p>Reason: <span th:text="${message}"></span></p>
+  	</div>
+</div>
+</body>
+</html>
