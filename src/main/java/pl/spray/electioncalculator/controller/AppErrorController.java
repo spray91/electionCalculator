@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class AppErrorController implements ErrorController {
 	private final static String ERROR_PATH = "/error";
-	
+
+	//TODO: refactor error handling!
+
 	@RequestMapping("/error")
     public String error(Model model, HttpServletRequest httpRequest) {
 		Integer statusCode = (Integer) httpRequest.getAttribute("javax.servlet.error.status_code");

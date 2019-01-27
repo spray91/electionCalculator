@@ -6,6 +6,7 @@
 	<groupId>pl.spray</groupId>
 	<artifactId>ElectionCalculator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>ElectionCalculator</name>
 	<description>Project for recruitment process.</description>
@@ -14,7 +15,6 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
